@@ -8,27 +8,38 @@ from .filters import JobFilter
 # Create your views here.
 
 def home(request):
+    job_list = Job.objects.all()
+
+    ## filters
+    myfilter = JobFilter(request.GET, queryset=job_list)
+    job_list = myfilter.qs
+
+    total_jobs_count = job_list.count()  # Count total jobs before pagination
+
+    paginator = Paginator(job_list, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     image_path = '/static/jobber.png'
     image_about = '/static/about.png'
-    return render(request, 'job/home.html', {'image_path': image_path,
-                                             'image_about': image_about})
+    context = {'jobs': page_obj, 'myfilter': myfilter, 'total_jobs_count': total_jobs_count, 'image_path': image_path, 'image_about': image_about }
+    return render(request, 'job/home.html', context)
 
 def job_list(request):
     job_list = Job.objects.all()
 
     ## filters
-    myfilter = JobFilter(request.GET,queryset=job_list)
+    myfilter = JobFilter(request.GET, queryset=job_list)
     job_list = myfilter.qs
 
+    total_jobs_count = job_list.count()  # Count total jobs before pagination
 
-    paginator = Paginator(job_list, 3) # Show 25 contacts per page.
+    paginator = Paginator(job_list, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-
-    context = {'jobs' :page_obj , 'myfilter' : myfilter} # template name
-    return render(request,'job/job_list.html',context)
-
+    context = {'jobs': page_obj, 'myfilter': myfilter, 'total_jobs_count': total_jobs_count}
+    return render(request, 'job/job_list.html', context)
 
 
 def job_detail(request , slug):

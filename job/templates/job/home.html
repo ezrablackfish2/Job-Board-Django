@@ -1,0 +1,92 @@
+
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block body %} 
+    <!-- Hero Section -->
+        <!-- bradcam_area  -->
+	<style>
+        .bradcam_area {
+		display: inline-block;
+		position: relative;
+		width: 100%;
+            	background-color: #f8f9fa;
+            	padding: 100px 0;
+            	text-align: center;
+	    	margin-bottom: 100px;
+		font-family: "itim";
+        },
+	.bottom {
+		display: inline-block;
+		position: relative;
+		margin-bottom: 200px;
+	}
+    </style>
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>{{jobs.count}}+ Jobs Available</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Welcome to Jobber</h1>
+                    <p class="lead">Find the perfect job for you. Browse through thousands of opportunities.</p>
+                    <a href="{% url 'jobs:job_list' %}" class="btn btn-primary">Explore Jobs</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ image_path }}" alt="Hero Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Jobs Section -->
+    <section class="featured-jobs-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Featured Jobs</h2>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Place your featured job cards here -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Job Title</h5>
+                            <p class="card-text">Job Description or Brief Overview</p>
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat the above card structure for other featured jobs -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="{{ image_about }}" alt="About Us Image" class="img-fluid">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">About Us</h2>
+                    <p>We are committed to helping you find your dream job. Our platform connects talented individuals with top companies worldwide.</p>
+                    <a href="/contact-us" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="bottom">.
+    </div>
+{% endblock body %}
+

@@ -34,7 +34,7 @@ def job_list(request):
 
     total_jobs_count = job_list.count()  # Count total jobs before pagination
 
-    paginator = Paginator(job_list, 3)
+    paginator = Paginator(job_list, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

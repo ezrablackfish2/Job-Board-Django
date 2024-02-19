@@ -3,3 +3,6 @@ venv
 .elf
 .back
 .venv
+*.pyc
+*png
+db.sqlite3

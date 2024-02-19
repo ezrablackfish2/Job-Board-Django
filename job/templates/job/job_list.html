@@ -32,7 +32,13 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>{{ total_jobs_count }}+ Jobs Available</h3>
+                        <h3>
+                            {% if total_jobs_count > 0 %}
+                              {{ total_jobs_count }}+ Jobs Available
+                            {% else %}
+                              No jobs available
+                            {% endif %}
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -108,6 +114,8 @@
                                     </div>
                                 </div>
                             </div>
+                            {% empty %}
+      <p style="font-size: 20px;">There are currently no jobs available.</p>
                             {% endfor %}
                         </div>
                         

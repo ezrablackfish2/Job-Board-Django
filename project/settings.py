@@ -145,3 +145,7 @@ EMAIL_PORT = '587'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://jobber-1upt.onrender.com',
+]
